@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Tic Tac Toe</title>
     <style>
+            @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Vina+Sans&display=swap');
             *{
             margin: 0;
             padding: 0;
+            background-color: #BA5DF9;
             }
             .gameContainer{ 
             display: flex;
@@ -19,19 +21,20 @@
             display: grid;
             grid-template-rows: repeat(3, 10vw);
             grid-template-columns: repeat(3, 10vw);
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Bruno Ace SC', cursive;
             position: relative;
             }
             .box{
-            border: 2px solid black;
+            border: 2px solid rgb(209, 200, 200);
             font-size: 8vw;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'Bruno Ace SC', cursive;
             }
             .box:hover{
-            background-color: rgb(242, 234, 250);
+            background-color: transparent;
             }
             .info {
             font-size: 40px;
@@ -82,8 +85,8 @@
                   font-size: 1.5rem;
             }
             .container { 
-                  grid-template-rows: repeat(3, 20vw);
-                  grid-template-columns: repeat(3, 20vw);
+                  grid-template-rows: repeat(3, 25vw);
+                  grid-template-columns: repeat(3, 25vw);
             }
             }
     </style>
@@ -105,7 +108,7 @@
         <h1>TIC TAC TOE BY SHEKHAR</h1><br><br>
         <div>
           <span class="info">Turn for X</span><br><br>
-          <button id="reset">RESET</button>
+          <button id="reset">RESTART</button>
         </div>
       </div>
     </div>
@@ -114,24 +117,24 @@
             let isgameover = false;
             // Function to change the turn
             const changeTurn = ()=>{
-            return turn === "X"? "0": "X"
+            return turn === "X"? "O": "X"
             }
             // Function to check for a win
             const checkWin = ()=>{
             let boxtext = document.getElementsByClassName('boxtext');
             let wins = [
-                  [0, 1, 2, 5, 5, 0],
-                  [3, 4, 5, 5, 15, 0],
-                  [6, 7, 8, 5, 25, 0],
-                  [0, 3, 6, -5, 15, 90],
-                  [1, 4, 7, 5, 15, 90],
-                  [2, 5, 8, 15, 15, 90],
-                  [0, 4, 8, 5, 15, 45],
-                  [2, 4, 6, 5, 15, 135],
+                  [0, 1, 2],
+                  [3, 4, 5],
+                  [6, 7, 8],
+                  [0, 3, 6],
+                  [1, 4, 7],
+                  [2, 5, 8],
+                  [0, 4, 8],
+                  [2, 4, 6],
             ]
             wins.forEach(e =>{
                   if((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "") ){
-                        document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
+                        document.querySelector('.info').innerText = boxtext[e[0]].innerText + "Won"
                         isgameover = true
                   }
             })
